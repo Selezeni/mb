@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+{% extends 'base.html' %}
+
     <title>HOME</title>
 </head>
 <body>
-    <h1>Message board homepage</h1>
-    <ul>
-        {% for post in object_list %}
-        <li>{{ post }}</li>
-        {% endfor %}
-    </ul>
+
+{% block content %}
+    {% for post in object_list %}
+    <div class="post-entry">
+        <h2><a href="{% url post_detail post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.body }}</p>
+    </div>
+
+    {% endfor %}
+{% endblock content %}
 </body>
 </html>
